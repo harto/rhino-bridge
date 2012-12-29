@@ -3,8 +3,8 @@
 A mechanism for exporting Java objects (e.g. Clojure functions) into a
 Rhino-based ClojureScript environment.
 
-Status: proof-of-concept. (Possibly an insane idea, and I'm not even
-sure that I need it yet.)
+Status: proof-of-concept (i.e. possibly an insane idea that I'm not sure
+I even need)
 
 ## Usage
 
@@ -22,3 +22,4 @@ Then, access the exported objects using ClojureScript like this:
 ## TODO
 
  * Provide sugar for transparent interop, e.g. calling Clojure fns
+ * Can the REPL dependency be removed?
