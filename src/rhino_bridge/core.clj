@@ -9,7 +9,8 @@
 (defn init! [env]
   (binding [analyzer/*cljs-ns* 'cljs.user]
     (repl/-setup env)
-    (repl/load-file env "rhino_bridge/exports.cljs")))
+    (repl/load-file env "rhino_bridge/exports.cljs")
+    env))
 
 (defn export!
   "Exports a Java object into a ClojureScript environment. The object can
