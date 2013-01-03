@@ -10,10 +10,10 @@ I even need)
 
 Export objects using Clojure like this:
 
-    (let [env (cljs.repl.rhino/repl-env)]
-      (rhino-bridge.core/init! env)
-      (rhino-bridge.core/export! env "foo" :bar)
-      (cljs.repl/repl env))
+    (-> (cljs.repl.rhino/repl-env)
+        (rhino-bridge.core/init!)
+        (rhino-bridge.core/export! "foo" :bar)
+        (cljs.repl/repl))
 
 Then, access the exported objects using ClojureScript like this:
 
