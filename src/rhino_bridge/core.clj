@@ -33,4 +33,5 @@
         ~(symbol "js" exported-val-name)))
     ;; Unpollute the global scope
     (undump exported-key-name)
-    (undump exported-val-name)))
+    (undump exported-val-name)
+    env))
