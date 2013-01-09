@@ -1,4 +1,4 @@
-(ns rhino-bridge.test.core
+(ns rhino-bridge.core-test
   (:use [clojure.test]
         [rhino-bridge.core]
         [rhino-bridge.cljs])
