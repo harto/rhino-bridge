@@ -1,7 +1,6 @@
 (ns rhino-bridge.test.core
   (:use [clojure.test]
-        [rhino-bridge.core]
-        [rhino-bridge.cljs])
+        [rhino-bridge.core])
   (:require [cljs.repl.rhino :as rhino]))
 
 (defn- cljs-env []

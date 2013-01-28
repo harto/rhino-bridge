@@ -2,8 +2,7 @@
 
 (ns rhino-bridge.core
   (:require [cljs.analyzer :as analyzer]
-            [cljs.repl :as repl]
-            [rhino-bridge.cljs :as cljs])
+            [cljs.repl :as repl])
   (:import [org.mozilla.javascript Context ScriptableObject]))
 
 (defn init! [env]
@@ -11,6 +10,15 @@
     (repl/-setup env)
     (repl/load-file env "rhino_bridge/exports.cljs")
     env))
+
+(defn evaluate-form
+  "Compiles and executes a form in a ClojureScript environment. (This is
+   essentially the 'eval' part of `cljs.repl/repl'.)"
+  [repl-env form]
+  (repl/evaluate-form repl-env
+                      (analyzer/empty-env)
+                      "<rhino-bridge initialiser>"
+                      form))
 
 (defn export!
   "Exports a Java object into a ClojureScript environment. The object can
@@ -27,7 +35,7 @@
     (dump exported-val-name v)
     ;; Now that the key/value pair are exposed as JS objects, put them into our
     ;; well-known location.
-    (cljs/evaluate-form env
+    (evaluate-form env
       `(rhino-bridge.exports/export!
         ~(symbol "js" exported-key-name)
         ~(symbol "js" exported-val-name)))
